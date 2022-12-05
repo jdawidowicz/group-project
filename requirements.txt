@@ -1,1 +1,8 @@
-pytest>=7.1.2
+cffi==1.15.1
+cryptography==38.0.4
+pycparser==2.21
+psycopg2==2.9.5
+python-dotenv==0.21.0
+six==1.16.0
+pandas==1.5.2
+sqlalchemy==1.4.44
