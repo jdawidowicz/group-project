@@ -23,9 +23,7 @@ clear()
 df = read_file()
 
 # Deletes the columns of sensitive information
-drop_sensitive()
-
-print(df)
+print(drop_sensitive())
 
 ## Load
 engine = create_engine_for_load_step() # this will be useful for pandas df.to_sql method
