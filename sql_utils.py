@@ -3,11 +3,16 @@ import os
 from dotenv import load_dotenv
 from sqlalchemy import create_engine
 
-load_dotenv()
-HOST = os.environ.get("POSTGRES_host")
-USER = os.environ.get("POSTGRES_user")
-PASSWORD = os.environ.get("POSTGRES_pass")
-DB_NAME = os.environ.get("POSTGRES_db")
+HOST='localhost'
+USER='postgres'
+PASSWORD='password'
+DB_NAME='database'
+
+# load_dotenv()
+# HOST = os.environ.get("POSTGRES_host")
+# USER = os.environ.get("POSTGRES_user")
+# PASSWORD = os.environ.get("POSTGRES_pass")
+# DB_NAME = os.environ.get("POSTGRES_db")
 
 DB_DATA = 'postgresql+psycopg2://' + USER + ':' + PASSWORD + '@' + 'localhost' + ':5432/' \
        + DB_NAME
