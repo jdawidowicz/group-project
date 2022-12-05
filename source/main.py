@@ -7,6 +7,7 @@
 
 ## Imports
 from extract import read_file
+from transform import drop_sensitive
 import os
 
 ## Functions
@@ -14,4 +15,10 @@ import os
 def clear():
     os.system('cls')
 
+clear()
+
+# Reads the CSV file
 print(read_file())
+
+# Deletes the columns of sensitive information
+print(drop_sensitive())

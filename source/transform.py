@@ -10,18 +10,11 @@ import pandas as pd
 
 
 def drop_sensitive():
-    read_file()
+    # Reads the CSV file
+    df = read_file()
 
-    to_drop = [
-        'Edition Statement',
-        'Corporate Author',
-        'Corporate Contributors',
-        'Former owner',
-        'Engraver',
-        'Contributors',
-        'Issuance type',
-        'Shelfmarks',
-        'Flickr URL'
-    ]
+    # Delets sensitive columns
+    del df['card_details']
+    del df['name']
 
-    df.drop(to_drop, inplace = True, axis = 1)
+    return df
