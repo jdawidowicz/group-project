@@ -5,9 +5,13 @@
 # File Last Edited 05/12/22
 ######################################################
 
+## Imports
 from extract import read_file
-
 import os
-os.system('cls')
+
+## Functions
+# Clears terminal
+def clear():
+    os.system('cls')
 
 print(read_file())
