@@ -28,17 +28,36 @@ def setup_db_connection(host=HOST, user=USER, password=PASSWORD, db_name=DB_NAME
 
 def create_db_tables(connection, cursor):
     
-    create_test_data_table = \
+    create_basket_data_table = \
     """
-        CREATE TABLE IF NOT EXISTS test(
-            customer_id int NOT NULL,
-            purchase_date date,
-            purchase_amount decimal(19,2),
-            product_id varchar(10)
+        CREATE TABLE IF NOT EXISTS basket(
+            order_id int NOT NULL,
+            product_id int NOT NULL
         );
     """;
+    create_product_data_table = \
+    """
+        CREATE TABLE IF NOT EXISTS products(
+            product_id serial NOT NULL,
+            product_name varchar(20),
+            price float
+        );
+    """;
+    create_order_data_table = \
+    """
+        CREATE TABLE IF NOT EXISTS orders(
+            order_id serial NOT NULL ,
+            Time int,
+            cash_card varchar(7),
+            total_price float,
+            location varchar(20)
+        );
+    """;
+
     
-    cursor.execute(create_test_data_table)
+    cursor.execute(create_basket_data_table)
+    cursor.execute(create_product_data_table)
+    cursor.execute(create_order_data_table)
     connection.commit()
     cursor.close()
     connection.close()

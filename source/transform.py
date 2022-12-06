@@ -5,13 +5,11 @@
 # File Last Edited 05/12/22
 ######################################################
 
-from source.extract import read_file
 import pandas as pd
 
-
-def drop_sensitive():
+def drop_sensitive(df):
     # Reads the CSV file
-    df = read_file()
+    
 
     # Delets sensitive columns
     del df['card_details']
