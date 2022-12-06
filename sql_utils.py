@@ -31,14 +31,14 @@ def create_db_tables(connection, cursor):
     create_basket_data_table = \
     """
         CREATE TABLE IF NOT EXISTS basket(
-            order_id int NOT NULL,
-            product_id int NOT NULL
+            order_id serial NOT NULL,
+            product_id serial NOT NULL
         );
     """;
     create_product_data_table = \
     """
         CREATE TABLE IF NOT EXISTS products(
-            product_id int NOT NULL,
+            product_id serial NOT NULL,
             product_name varchar(20),
             price float
         );
@@ -46,7 +46,7 @@ def create_db_tables(connection, cursor):
     create_order_data_table = \
     """
         CREATE TABLE IF NOT EXISTS orders(
-            order_id int NOT NULL,
+            order_id serial NOT NULL ,
             Time int,
             cash_card varchar(7),
             total_price float,
