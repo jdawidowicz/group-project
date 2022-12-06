@@ -7,15 +7,24 @@
 
 ## Imports
 import pandas as pd
+import glob
+import os
 
 
 ## Functions
 # Reads CSV file
-def read_file():
-    global df
+def read_files():
+    #create list to hold dataframes
+    list_of_df = []
+
     
+
     # Reads CSV file and returns it as a dataframe
-    df = pd.read_csv('data\chesterfield_25-08-2021_09-00-00.csv', names=['date', 'branch', 'name', 'product', 'price', 'payment_type', 'card_details'])
+    #The 'glob' function will 
+    for csv in glob.glob("data\*.csv"):
+        df = pd.read_csv(csv, names=['date', 'branch', 'name', 'product', 'price', 'payment_type', 'card_details'])
+        list_of_df.append(df)
 
-    return df
+    
 
+    return list_of_df

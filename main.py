@@ -7,7 +7,7 @@
 
 ## Imports
 from sql_utils import setup_db_connection, create_db_tables, create_engine_for_load_step
-from source.extract import read_file
+from source.extract import read_files
 from source.transform import drop_sensitive
 import os
 
@@ -20,14 +20,17 @@ def clear():
 clear()
 
 # Reads the CSV file
-df = read_file()
+dfs = read_files()
 
 # Deletes the columns of sensitive information
-print(drop_sensitive())
+for df in dfs:
+    print(drop_sensitive(df))
 
 ## Load
 engine = create_engine_for_load_step() # this will be useful for pandas df.to_sql method
 connection, cursor = setup_db_connection()
 create_db_tables(connection, cursor) # set up the sql tables that we will be loading to
 
-df.to_sql('test', engine, index=False, if_exists='replace')
+for df in dfs:
+    df.to_sql('test', engine, index=False, if_exists='replace')
+
