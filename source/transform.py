@@ -1,6 +1,25 @@
 
+
+######################################################
+# Joseph Beckett
+# Transform - A file to change the data to the clients specifications
+# File Created 05/12/22
+# File Last Edited 05/12/22
+######################################################
+
+import pandas as pd
 import numpy as np
 
+def drop_sensitive(df):
+    # Reads the CSV file
+
+
+    # Delets sensitive columns
+    del df['card_details']
+    del df['name']
+
+    return df
+    
 def split_product_lines():
     # splits product lines into separate rows and removes spaces
     df = drop_sensitive()
@@ -11,7 +30,6 @@ def split_product_lines():
         if str(current).startswith(' '):
             df[col].iloc[i] = current[1:]
         return df
-
 
 def product_table():
     # spaces not removed even though it works in the source function. Had to repeat the code
