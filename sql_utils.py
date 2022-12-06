@@ -31,8 +31,8 @@ def create_db_tables(connection, cursor):
     create_basket_data_table = \
     """
         CREATE TABLE IF NOT EXISTS basket(
-            order_id serial NOT NULL,
-            product_id serial NOT NULL
+            order_id int NOT NULL,
+            product_id int NOT NULL
         );
     """;
     create_product_data_table = \
