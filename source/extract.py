@@ -18,13 +18,11 @@ def read_files():
     list_of_df = []
 
     
-
     # Reads CSV file and returns it as a dataframe
-    #The 'glob' function will 
+    #The 'glob' function will look through the 'data' folder for any file enifing in '.csv'
     for csv in glob.glob("data\*.csv"):
         df = pd.read_csv(csv, names=['date', 'branch', 'name', 'product', 'price', 'payment_type', 'card_details'])
         list_of_df.append(df)
 
     
-
     return list_of_df

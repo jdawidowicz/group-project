@@ -6,9 +6,12 @@
 ######################################################
 
 ## Imports
-from sql_utils import setup_db_connection, create_db_tables, create_engine_for_load_step
 from source.extract import read_files
+from source.transform import drop_columns
 from source.transform import drop_sensitive
+from source.transform import product_table
+from source.load import load_to_database
+import pandas as pd
 import os
 
 ## Functions
@@ -21,16 +24,18 @@ clear()
 
 # Reads the CSV file
 dfs = read_files()
+df = pd.concat(dfs)
+products_df = pd.concat(dfs)
+orders_df = pd.concat(dfs)
 
-# Deletes the columns of sensitive information
-for df in dfs:
-    print(drop_sensitive(df))
 
-## Load
-engine = create_engine_for_load_step() # this will be useful for pandas df.to_sql method
-connection, cursor = setup_db_connection()
-create_db_tables(connection, cursor) # set up the sql tables that we will be loading to
+#create and load orders table
+orders_df = drop_sensitive(orders_df)
+orders_df = drop_columns(orders_df, 'product')
 
-for df in dfs:
-    df.to_sql('test', engine, index=False, if_exists='replace')
+load_to_database(orders_df, 'order_id', 'orders')
 
+#create and load products table
+products_df = product_table(products_df)
+
+load_to_database(products_df, 'products_id', 'products')
