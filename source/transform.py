@@ -11,8 +11,6 @@ import numpy as np
 
 def drop_sensitive(df):
     # Reads the CSV file
-    #TEMPORARY CODE FOR READING
-    df = pd.read_csv('chesterfield_25-08-2021_09-00-00.csv', names=['date', 'branch', 'name', 'product', 'price', 'payment_type', 'card_details'])
     # Delets sensitive columns
     del df['card_details']
     del df['name']
