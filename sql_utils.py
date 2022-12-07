@@ -3,6 +3,7 @@ import os
 from dotenv import load_dotenv
 from sqlalchemy import create_engine
 
+
 HOST='localhost'
 USER='postgres'
 PASSWORD='password'
@@ -47,7 +48,7 @@ def create_db_tables(connection, cursor):
     """
         CREATE TABLE IF NOT EXISTS orders(
             order_id serial NOT NULL ,
-            Time int,
+            Time varchar(20),
             cash_card varchar(7),
             total_price float,
             location varchar(20)

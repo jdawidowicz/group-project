@@ -1,5 +1,3 @@
-
-
 ######################################################
 # Joseph Beckett
 # Transform - A file to change the data to the clients specifications
@@ -19,22 +17,32 @@ def drop_sensitive(df):
     del df['name']
 
     return df
+
+def drop_columns(df, *columns):
+    # Reads the CSV file
+    # Delets sensitive columns
+
+    for column in columns:
+        del df[column]
+        
+    return df
     
-def split_product_lines():
+def split_product_lines(df):
     # splits product lines into separate rows and removes spaces
-    df = drop_sensitive()
+    df = drop_sensitive(df)
     df = df.assign(product=df['product'].str.split(',')).explode('product')
     col = 'product'
     for i in range(len(df[col])):
         current = df[col].iloc[i]
         if str(current).startswith(' '):
             df[col].iloc[i] = current[1:]
-        return df
+        
+    return df
 
-def product_table():
+def product_table(df):
     # spaces not removed even though it works in the source function. Had to repeat the code
     # needs work but the output is correct
-    product_df = split_product_lines()
+    product_df = split_product_lines(df)
     col = 'product'
     for i in range(len(product_df[col])):
         current = product_df[col].iloc[i]
@@ -51,16 +59,3 @@ def product_table():
         product_dict_list.append(product_dict)
     product_df = pd.DataFrame(product_dict_list)
     return product_df
-
-
-
-
-
-
-
-
-
-
-
-        
-
