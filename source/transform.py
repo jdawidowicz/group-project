@@ -17,36 +17,36 @@ def format_df(df):
         current = df[col].iloc[i]
         dt = datetime.strptime(current, '%d/%m/%Y %H:%M')
         df[col].iloc[i] = int(dt.timestamp())
+
     # Delets sensitive columns
-    if df['card_details'] == True:
+    if 'card_details' in df:
         del df['card_details']
-    if df['name'] == True:
+    if 'card_details' in df:
         del df['name']
+    
     return df
 
 def drop_columns(df, *columns):
-    # Reads the CSV file
-    # Delets sensitive columns
-
+    # Deletes sensitive columns
     for column in columns:
-        del df[column]
+        if column in df:
+            del df[column]
         
     return df
-    
+
 def split_product_lines(df):
     # splits product lines into separate rows and removes spaces
-
     df = df.assign(product=df['product'].str.split(', ')).explode('product')
     return df
 
 def product_table(df):
     # spaces not removed even though it works in the source function. Had to repeat the code
     # needs work but the output is correct
-
+    df = format_df(df)
     df = split_product_lines(df)
-    product_list = []
     product_list = df['product'].tolist()
     product_list = np.unique(product_list)
+
     product_dict_list = []
     for item in product_list:
         product_dict = {}
@@ -54,17 +54,19 @@ def product_table(df):
         product_dict['price'] = item[-4:]
         product_dict_list.append(product_dict)
     df = pd.DataFrame(product_dict_list)
+    
     return df
 
 def create_basket_base(df):
 
+    df = format_df(df)
     df = split_product_lines(df)
     col = 'product'
+
     for i in range(len(df[col])):
         current = df[col].iloc[i]
         df[col].iloc[i] = current[:-7]
-    del df['date']
-    del df['branch']
-    del df['price']
-    del df['payment_type']
+
+    drop_columns(df, 'date', 'branch', 'price', 'payment_type', 'name')
+
     return df

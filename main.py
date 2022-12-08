@@ -22,23 +22,21 @@ clear()
 
 # Reads the CSV file and merges.
 dfs = read_files()
-df = pd.concat(dfs, ignore_index=True)
-df = format_df(df)
-# products_df = pd.concat(dfs, ignore_index=True)
-# orders_df = pd.concat(dfs, ignore_index=True)
-# baskets_df = pd.concat(dfs, ignore_index=True)
+products_df = pd.concat(dfs, ignore_index=True)
+orders_df = pd.concat(dfs, ignore_index=True)
+baskets_df = pd.concat(dfs, ignore_index=True)
+
 
 #create and load orders table
-orders_df = drop_columns(df, 'product')
+orders_df = format_df(orders_df)
+orders_df = drop_columns(orders_df, 'product')
 load_to_database(orders_df, 'order_id', 'orders')
 
 #create and load products table
-products_df = product_table(df)
+products_df = product_table(products_df)
 load_to_database(products_df, 'product_id', 'products')
 
 #create and load basket table
-baskets_df = create_basket_base(df)
-
+baskets_df = create_basket_base(baskets_df)
 load_to_database(baskets_df, 'order_id', 'basket')
-
 load_baskets()
