@@ -8,11 +8,7 @@
 import pandas as pd
 import numpy as np
 from datetime import datetime
-#from extract import read_files
 
-
-def drop_sensitive(df):
-    # Reads the CSV file
     # date to seconds
     pd.options.mode.chained_assignment = None  # default='warn'
     col = 'date'
