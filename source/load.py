@@ -6,3 +6,18 @@ def load_to_database(df, df_index, table_name):
     create_db_tables(connection, cursor) # set up the sql tables that we will be loading to
 
     df.to_sql(table_name, engine, index=df_index, if_exists='replace')
+
+
+def load_baskets():
+    connection, cursor = setup_db_connection()
+    # add product_id column
+    sql = "ALTER TABLE basket ADD product_id INT NULL"
+    # update product_id from product table
+    sql_two = "UPDATE basket SET product_id = products.product_id FROM products WHERE basket.product LIKE products.product"
+    # drop product column
+    sql_three = "ALTER TABLE basket DROP product"
+    cursor.execute(sql)
+    cursor.execute(sql_two)
+    cursor.execute(sql_three)
+    connection.commit()
+    cursor.close()

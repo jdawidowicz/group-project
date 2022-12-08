@@ -7,10 +7,19 @@
 
 import pandas as pd
 import numpy as np
+from datetime import datetime
+#from extract import read_files
 
 
 def drop_sensitive(df):
     # Reads the CSV file
+    # date to seconds
+    pd.options.mode.chained_assignment = None  # default='warn'
+    col = 'date'
+    for i in range(len(df[col])):
+        current = df[col].iloc[i]
+        dt = datetime.strptime(current, '%d/%m/%Y %H:%M')
+        df[col].iloc[i] = int(dt.timestamp())
     # Delets sensitive columns
     del df['card_details']
     del df['name']
@@ -30,16 +39,15 @@ def split_product_lines(df):
 
     df = drop_sensitive(df)
     df = df.assign(product=df['product'].str.split(', ')).explode('product')
-
     return df
 
 def product_table(df):
     # spaces not removed even though it works in the source function. Had to repeat the code
     # needs work but the output is correct
 
-    product_df = split_product_lines(df)
+    df = split_product_lines(df)
     product_list = []
-    product_list = product_df['product'].tolist()
+    product_list = df['product'].tolist()
     product_list = np.unique(product_list)
     product_dict_list = []
     for item in product_list:
@@ -47,7 +55,18 @@ def product_table(df):
         product_dict['product'] = item[:-7]
         product_dict['price'] = item[-4:]
         product_dict_list.append(product_dict)
-    product_df = pd.DataFrame(product_dict_list)
+    df = pd.DataFrame(product_dict_list)
+    return df
 
-    return product_df
+def create_basket_base(df):
 
+    df = split_product_lines(df)
+    col = 'product'
+    for i in range(len(df[col])):
+        current = df[col].iloc[i]
+        df[col].iloc[i] = current[:-7]
+    del df['date']
+    del df['branch']
+    del df['price']
+    del df['payment_type']
+    return df

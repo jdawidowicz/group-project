@@ -33,7 +33,8 @@ def create_db_tables(connection, cursor):
     """
         CREATE TABLE IF NOT EXISTS basket(
             order_id int NOT NULL,
-            product_id int NOT NULL
+            product varchar(50),
+            product_id int NULL
         );
     """;
     create_product_data_table = \
