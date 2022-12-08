@@ -9,6 +9,7 @@ import pandas as pd
 import numpy as np
 from datetime import datetime
 
+def drop_sensitive(df):
     # date to seconds
     pd.options.mode.chained_assignment = None  # default='warn'
     col = 'date'
