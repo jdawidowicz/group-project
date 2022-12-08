@@ -9,7 +9,7 @@ import pandas as pd
 import numpy as np
 from datetime import datetime
 
-def drop_sensitive(df):
+def format_df(df):
     # date to seconds
     pd.options.mode.chained_assignment = None  # default='warn'
     col = 'date'
@@ -18,8 +18,10 @@ def drop_sensitive(df):
         dt = datetime.strptime(current, '%d/%m/%Y %H:%M')
         df[col].iloc[i] = int(dt.timestamp())
     # Delets sensitive columns
-    del df['card_details']
-    del df['name']
+    if df['card_details'] == True:
+        del df['card_details']
+    if df['name'] == True:
+        del df['name']
     return df
 
 def drop_columns(df, *columns):
@@ -34,7 +36,6 @@ def drop_columns(df, *columns):
 def split_product_lines(df):
     # splits product lines into separate rows and removes spaces
 
-    df = drop_sensitive(df)
     df = df.assign(product=df['product'].str.split(', ')).explode('product')
     return df
 
