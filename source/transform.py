@@ -7,10 +7,19 @@
 
 import pandas as pd
 import numpy as np
+from datetime import datetime
+
 
 
 def drop_sensitive(df):
-    # Reads the CSV file
+    # Reads the CSV file4    
+    # date to seconds
+    pd.options.mode.chained_assignment = None  # default='warn'
+    col = 'date'
+    for i in range(len(df[col])):
+        current = df[col].iloc[i]
+        dt = datetime.strptime(current, '%d/%m/%Y %H:%M')
+        df[col].iloc[i] = int(dt.timestamp())
     # Delets sensitive columns
     del df['card_details']
     del df['name']
