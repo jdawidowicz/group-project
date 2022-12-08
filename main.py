@@ -26,11 +26,10 @@ clear()
 
 # Reads the CSV file
 dfs = read_files()
-df = pd.concat(dfs)
-products_df = pd.concat(dfs)
-orders_df = pd.concat(dfs)
-baskets_df = pd.concat(dfs)
-
+df = pd.concat(dfs, ignore_index=True)
+products_df = pd.concat(dfs, ignore_index=True)
+orders_df = pd.concat(dfs, ignore_index=True)
+baskets_df = pd.concat(dfs, ignore_index=True)
 
 #create and load orders table
 orders_df = drop_sensitive(orders_df)
