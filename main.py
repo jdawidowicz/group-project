@@ -7,12 +7,8 @@
 
 ## Imports
 from source.extract import read_files
-from source.transform import drop_columns
-from source.transform import drop_sensitive
-from source.transform import product_table
-from source.transform import create_basket_base
-from source.load import load_to_database
-from source.load import load_baskets
+from source.transform import *
+from source.load import *
 import pandas as pd
 import os
 
@@ -24,26 +20,16 @@ def clear():
 ## Main Code
 clear()
 
-# Reads the CSV file
+# Reads the CSV file and merges.
 dfs = read_files()
-df = pd.concat(dfs, ignore_index=True)
-products_df = pd.concat(dfs, ignore_index=True)
-orders_df = pd.concat(dfs, ignore_index=True)
-baskets_df = pd.concat(dfs, ignore_index=True)
+for df in dfs:
+    df = format_df(df)
 
-#create and load orders table
-orders_df = drop_sensitive(orders_df)
-orders_df = drop_columns(orders_df, 'product')
+    #create and load orders table
+    load_orders_table(df)
 
-load_to_database(orders_df, 'order_id', 'orders')
+    #create and load products table
+    load_products_table(df)
 
-#create and load products table
-products_df = product_table(products_df)
-
-load_to_database(products_df, 'product_id', 'products')
-
-baskets_df = create_basket_base(baskets_df)
-
-load_to_database(baskets_df, 'order_id', 'basket')
-
-load_baskets()
+    #create and load basket table
+    #load_baskets(df)
