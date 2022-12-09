@@ -11,14 +11,14 @@ from datetime import datetime
 
 def format_df(df):
     # date to seconds
-    pd.options.mode.chained_assignment = None  # default='warn'
-    col = 'date'
-    for i in range(len(df[col])):
-        current = df[col].iloc[i]
-        dt = datetime.strptime(current, '%d/%m/%Y %H:%M')
-        df[col].iloc[i] = int(dt.timestamp())
+    # pd.options.mode.chained_assignment = None  # default='warn'
+    # col = 'date'
+    # for i in range(len(df[col])):
+    #     current = df[col].iloc[i]
+    #     dt = datetime.strptime(current, '%d/%m/%Y %H:%M')
+    #     df[col].iloc[i] = int(dt.timestamp())
 
-    # Delets sensitive columns
+    # Deletes sensitive columns
     if 'card_details' in df:
         del df['card_details']
     if 'name' in df:
@@ -67,6 +67,6 @@ def create_basket_base(df):
         current = df[col].iloc[i]
         df[col].iloc[i] = current[:-7]
 
-    drop_columns(df, 'date', 'branch', 'price', 'payment_type', 'name')
+    drop_columns(df, 'date', 'branch', 'total_price', 'payment_type', 'name')
 
     return df
