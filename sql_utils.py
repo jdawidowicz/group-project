@@ -28,12 +28,25 @@ def setup_db_connection(host=HOST, user=USER, password=PASSWORD, db_name=DB_NAME
     return connection, cursor
 
 def create_db_tables(connection, cursor):
-    
-    create_basket_data_table = \
+    create_order_basket_data_table = \
     """
-        CREATE TABLE IF NOT EXISTS basket(
+        CREATE TABLE IF NOT EXISTS order_basket(
             order_id serial NOT NULL,
-            product varchar(50),
+            product text
+        );
+    """;
+    create_item_basket_data_table = \
+    """
+        CREATE TABLE IF NOT EXISTS item_basket(
+            order_id serial NOT NULL,
+            product text,
+            product_id int
+        );
+    """;
+    create_baskets_data_table = \
+    """
+        CREATE TABLE IF NOT EXISTS baskets(
+            order_id int NULL,
             product_id int NULL
         );
     """;
@@ -56,8 +69,9 @@ def create_db_tables(connection, cursor):
         );
     """;
 
-    
-    cursor.execute(create_basket_data_table)
+    cursor.execute(create_order_basket_data_table)
+    cursor.execute(create_item_basket_data_table)
+    cursor.execute(create_baskets_data_table)
     cursor.execute(create_product_data_table)
     cursor.execute(create_order_data_table)
     connection.commit()
