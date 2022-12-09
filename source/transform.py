@@ -21,7 +21,7 @@ def format_df(df):
     # Delets sensitive columns
     if 'card_details' in df:
         del df['card_details']
-    if 'card_details' in df:
+    if 'name' in df:
         del df['name']
     
     return df

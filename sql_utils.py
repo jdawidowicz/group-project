@@ -49,8 +49,8 @@ def create_db_tables(connection, cursor):
     """
         CREATE TABLE IF NOT EXISTS orders(
             order_id serial NOT NULL ,
-            Time varchar(20),
-            cash_card varchar(7),
+            date varchar(20),
+            payment_type varchar(7),
             total_price float,
             location varchar(20)
         );

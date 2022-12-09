@@ -5,7 +5,7 @@ def load_to_database(df, df_index, table_name):
     connection, cursor = setup_db_connection()
     create_db_tables(connection, cursor) # set up the sql tables that we will be loading to
 
-    df.to_sql(table_name, engine, index=df_index, if_exists='replace')
+    df.to_sql(table_name, engine, index=df_index, if_exists='append')
 
 
 def load_baskets():
