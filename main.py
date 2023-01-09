@@ -32,4 +32,4 @@ for df in dfs:
     load_products_table(df)
 
     #create and load basket table
-    #load_baskets(df)
+    load_baskets(df)
