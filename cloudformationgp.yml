@@ -14,7 +14,7 @@ Parameters:
   S3BucketName:
     Type: String
     Description: Enter name of the S3 data bucket
-    Default: delee3-Team1-testbucket
+    Default: delee3-team1-testbucket
 
 
 
@@ -87,5 +87,5 @@ Resources:
       Action: lambda:InvokeFunction
       FunctionName: !Ref LambdaFunction
       Principal: s3.amazonaws.com
-      SourceArn: !GetAtt S3Bucket.Arn
+      SourceArn: !Sub 'arn:aws:s3:::delee3-team1-test-bucket'
 
