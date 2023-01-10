@@ -60,7 +60,7 @@ Resources:
       Timeout: 30
       FunctionName: team1ETL
       Runtime: python3.9
-      Handler: lambda_handler.handler
+      Handler: lambdacode.lambda_handler
       Role: !GetAtt LambdaFunctionRole.Arn
       Layers: [arn:aws:lambda:eu-west-1:239598709205:layer:SQLAlchemy:1, arn:aws:lambda:eu-west-1:239598709205:layer:python_39_psycopg2_layer:1, arn:aws:lambda:eu-west-1:239598709205:layer:Team1-reqsV2:3]
       Code:
