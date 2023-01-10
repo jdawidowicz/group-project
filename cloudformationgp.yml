@@ -34,7 +34,6 @@ Resources:
         - arn:aws:iam::aws:policy/AmazonRedshiftDataFullAccess
         - arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole
         - arn:aws:iam::aws:policy/AmazonSSMReadOnlyAccess
-        - arn:aws:iam::aws:policy/AmazonS3FullAccess
       Policies:
       - PolicyName: LambdaLogsPolicy
         PolicyDocument:
