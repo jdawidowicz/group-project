@@ -11,6 +11,11 @@ Parameters:
     Type: String
     Description: Enter the name of the S3 key of your deployment package.
     Default: lambdacode.zip
+  S3BucketName:
+    Type: String
+    Description: Enter name of the S3 data bucket
+    Default: delee3-Team1-testbucket
+
 
 
 Resources:
@@ -66,19 +71,19 @@ Resources:
   S3Bucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: delee3-team1-testbucket
-      NotificationConfiguration:
-        LambdaConfigurations:
-          -
-            Function: !Ref LambdaDeploymentArn
-            Event: "s3:ObjectCreated:*"
-            Filter:
-              S3Key:
-                Rules:
-                  -
-                    Name: suffix
-                    Value: csv
-  
+    DependsOn: S3BucketPermission
+    Properties:
+    BucketName: !Ref S3BucketName
+        NotificationConfiguration:
+          LambdaConfigurations:
+            - Event: s3:ObjectCreated:Put
+              Filter:
+                S3Key:
+                  Rules:
+                    - Name: suffix
+                      Value: csv
+              Function: !GetAtt LambdaFunction.Arn
+
   S3BucketPermission:
     Type: AWS::Lambda::Permission
     Properties: 
