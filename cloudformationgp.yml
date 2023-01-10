@@ -71,18 +71,16 @@ Resources:
   S3Bucket:
     Type: AWS::S3::Bucket
     Properties:
-    DependsOn: S3BucketPermission
-    Properties:
-    BucketName: !Ref S3BucketName
-        NotificationConfiguration:
-          LambdaConfigurations:
-            - Event: s3:ObjectCreated:Put
-              Filter:
-                S3Key:
-                  Rules:
-                    - Name: suffix
-                      Value: csv
-              Function: !GetAtt LambdaFunction.Arn
+      BucketName: !Ref S3BucketName
+      NotificationConfiguration:
+        LambdaConfigurations:
+          - Event: s3:ObjectCreated:Put
+            Filter:
+              S3Key:
+                Rules:
+                  - Name: suffix
+                    Value: csv
+            Function: !GetAtt LambdaFunction.Arn
 
   S3BucketPermission:
     Type: AWS::Lambda::Permission
