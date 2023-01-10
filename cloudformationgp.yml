@@ -14,7 +14,7 @@ Parameters:
   S3BucketName:
     Type: String
     Description: Enter name of the S3 data bucket
-    Default: delee3-team1-testbucket
+    Default: delee3-team1-testbucket2
 
 
 
@@ -58,7 +58,7 @@ Resources:
     Properties:
       Description: ETL lambda function team 1
       Timeout: 30
-      FunctionName: team1ETL
+      FunctionName: team1ETLv2
       Runtime: python3.9
       Handler: lambdacode.lambda_handler
       Role: !GetAtt LambdaFunctionRole.Arn
@@ -88,5 +88,5 @@ Resources:
       Action: lambda:InvokeFunction
       FunctionName: !Ref LambdaFunction
       Principal: s3.amazonaws.com
-      SourceArn: !Sub arn:aws:s3:::$'{S3BucketName}'
+      SourceArn: !Sub 'arn:aws:s3:::${S3BucketName}'
 
