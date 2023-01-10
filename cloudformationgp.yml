@@ -61,6 +61,15 @@ Resources:
       Code:
           S3Bucket: !Ref DeploymentBucket
           S3Key: !Ref DeploymentPackageKey
+
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: team1-bucket
+      NotificationConfiguration:
+        LambdaConfigurations:
+          - Event: s3:ObjectCreated:*
+            Function: !GetAtt LambdaFunction.Arn
   
   S3BucketPermission:
     Type: AWS::Lambda::Permission
@@ -68,5 +77,5 @@ Resources:
       Action: lambda:InvokeFunction
       FunctionName: !Ref LambdaFunction
       Principal: s3.amazonaws.com
-      SourceArn: arn:aws:s3:::team1-testbucket
+      SourceArn: !GetAtt S3Bucket.Arn
 
