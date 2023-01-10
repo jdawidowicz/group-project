@@ -32,7 +32,6 @@ Resources:
           Action:
             - sts:AssumeRole
       Path: "/"
-      PermissionsBoundary: !Sub arn:aws:iam::${AWS::AccountId}:policy/ScopePermissions
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/AmazonS3FullAccess
         - arn:aws:iam::aws:policy/SecretsManagerReadWrite
