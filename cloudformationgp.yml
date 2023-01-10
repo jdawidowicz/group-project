@@ -69,8 +69,15 @@ Resources:
       BucketName: team1-bucket
       NotificationConfiguration:
         LambdaConfigurations:
-          - Event: s3:ObjectCreated:*
-            Function: !GetAtt LambdaFunction.Arn
+          -
+            Function: !Ref LambdaDeploymentArn
+            Event: "s3:ObjectCreated:*"
+            Filter:
+              S3Key:
+                Rules:
+                  -
+                    Name: suffix
+                    Value: csv
   
   S3BucketPermission:
     Type: AWS::Lambda::Permission
