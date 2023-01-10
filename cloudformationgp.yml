@@ -70,7 +70,6 @@ Resources:
 
   S3Bucket:
     Type: AWS::S3::Bucket
-    Properties:
     DependsOn: S3BucketPermission
     Properties:
     BucketName: !Ref S3BucketName
@@ -83,7 +82,7 @@ Resources:
                     - Name: suffix
                       Value: csv
               Function: !GetAtt LambdaFunction.Arn
-
+              
   S3BucketPermission:
     Type: AWS::Lambda::Permission
     Properties: 
