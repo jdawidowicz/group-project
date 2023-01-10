@@ -69,13 +69,8 @@ Resources:
       BucketName: delee3-team1-test-bucket
       NotificationConfiguration:
         LambdaConfigurations:
-          - Event: 's3:ObjectCreated:*'
-            Filter:
-              S3Key:
-                Rules:
-                  - Name: suffix
-                    Value: .csv
-            Function: !Ref LambdaFunction
+          - Event: s3:ObjectCreated:*
+            Function: !GetAtt LambdaFunction.Arn
   
   S3BucketPermission:
     Type: AWS::Lambda::Permission
