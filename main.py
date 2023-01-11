@@ -32,8 +32,8 @@ for df in dfs:
     load_products_table(df)
 
     #create and load basket table
+
     load_order_basket_table(df)
     
 load_item_basket_table()
 load_baskets()
-
