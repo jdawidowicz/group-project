@@ -10,7 +10,7 @@ Parameters:
   DeploymentPackageKey:
     Type: String
     Description: Enter the name of the S3 key of your deployment package.
-    Default: lambdacode.zip
+    Default: lambda_code.zip
   S3BucketName:
     Type: String
     Description: Enter name of the S3 data bucket
@@ -60,7 +60,7 @@ Resources:
       Timeout: 30
       FunctionName: team1ETLv2
       Runtime: python3.9
-      Handler: lambdacode.lambda_handler
+      Handler: lambda_code.lambdacode.lambda_handler
       Role: !GetAtt LambdaFunctionRole.Arn
       Layers: [arn:aws:lambda:eu-west-1:239598709205:layer:SQLAlchemy:1, arn:aws:lambda:eu-west-1:239598709205:layer:python_39_psycopg2_layer:1, arn:aws:lambda:eu-west-1:239598709205:layer:Team1-reqsV2:3]
       Code:
