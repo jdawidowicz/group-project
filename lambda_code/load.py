@@ -35,7 +35,7 @@ def import_order_basket():
 
 def load_baskets():
     connection, cursor = setup_db_connection()
-    sql2 = ("SELECT product_id FROM products INTO item_basket.product_id WHERE products.product = item_basket.product")
+    sql2 = ("UPDATE item_basket SET product_id = products.product_id FROM products join item_basket t on t.product = products.product;")
     sql4 = ("INSERT INTO baskets SELECT order_id, product_id FROM item_basket")
     cursor.execute(sql2, sql4)
     connection.commit()
