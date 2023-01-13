@@ -41,37 +41,52 @@ def setup_db_connection(host=HOST, user=USER, password=PASSWORD, port=PORT, db_n
     return connection, cursor
 
 def create_db_tables(connection, cursor):
-    
-    # create_basket_data_table = \
-    # """
-    #     CREATE TABLE IF NOT EXISTS basket(
-    #         order_id int NOT NULL AUTO_INCREMENT,
-    #         product varchar(50),
-    #         product_id int NULL
-    #     );
-    # """;
-    # create_product_data_table = \
-    # """
-    #     CREATE TABLE IF NOT EXISTS products(
-    #         product_id int NOT NULL AUTO_INCREMENT,
-    #         product varchar(50),
-    #         price float
-    #     );
-    # """;
+    create_order_basket_data_table = \
+     """
+        CREATE TABLE IF NOT EXISTS "public"."order_basket"(
+            "order_id" INTEGER NOT NULL IDENTITY (1,1),
+            "product" text) 
+         ENCODE AUTO;
+    """
+    create_item_basket_data_table = \
+    """
+        CREATE TABLE IF NOT EXISTS "public"."item_basket"(
+            "order_id" INTEGER NOT NULL ,
+            "product" text,
+            "product_id" INTEGER)
+         ENCODE AUTO;
+    """
+    create_basket_data_table = \
+    """
+         CREATE TABLE IF NOT EXISTS "public"."basket"(
+             "order_id" INTEGER,
+             "product" varchar(50),
+             "product_id" INTEGER)
+         ENCODE AUTO;
+    """
+    create_product_data_table = \
+     """
+         CREATE TABLE IF NOT EXISTS "public"."products"( 
+         "product_id" INTEGER NOT NULL IDENTITY (1,1),
+         "product" VARCHAR NULL,
+         "price" NUMERIC(18,2) NULL,
+         PRIMARY KEY("product_id") ) 
+         ENCODE AUTO;
+     """;
     create_order_data_table = \
     """
-        CREATE TABLE IF NOT EXISTS team1orders(
-            
-            date varchar(20),
-            payment_type varchar(7),
-            total_price decimal,
-            branch varchar(20)
-        );
-    """;
-    #order_id int smallseria,
-    
-    #cursor.execute(create_basket_data_table)
-    #cursor.execute(create_product_data_table)
+        CREATE TABLE IF NOT EXISTS "public"."orders"( 
+        "order_id" INTEGER NOT NULL IDENTITY (1,1),
+        "total_price" NUMERIC(18,2) NULL,
+        "branch" VARCHAR NULL,
+        "date" VARCHAR NULL,
+        "payment_type" VARCHAR NULL,
+        PRIMARY KEY("order_id") ) ENCODE AUTO;
+    """
+    cursor.execute(create_order_basket_data_table)
+    cursor.execute(create_item_basket_data_table)
+    cursor.execute(create_basket_data_table)
+    cursor.execute(create_product_data_table)
     cursor.execute(create_order_data_table)
     connection.commit()
     cursor.close()

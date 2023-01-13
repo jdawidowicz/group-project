@@ -22,10 +22,13 @@ def lambda_handler(event, context):
   load_orders_table(df)
 
   #create and load products table
-  #load_products_table(df)
+  load_products_table(df)
 
+  print(import_order_basket)
   #create and load basket table
-  #load_baskets(df)
+  load_order_basket_table(df)
+  load_item_basket_table()
+  load_baskets()
   
   return {
     'statusCode': 200,

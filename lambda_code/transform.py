@@ -1,10 +1,3 @@
-######################################################
-# Joseph Beckett
-# Transform - A file to change the data to the clients specifications
-# File Created 05/12/22
-# File Last Edited 05/12/22
-######################################################
-
 import pandas as pd
 import numpy as np
 from datetime import datetime
@@ -57,16 +50,7 @@ def product_table(df):
     
     return df
 
-def create_basket_base(df):
-
+def create_order_basket(df):
     df = format_df(df)
-    df = split_product_lines(df)
-    col = 'product'
-
-    for i in range(len(df[col])):
-        current = df[col].iloc[i]
-        df[col].iloc[i] = current[:-7]
-
     drop_columns(df, 'date', 'branch', 'total_price', 'payment_type', 'name')
-
     return df
