@@ -93,4 +93,3 @@ def create_db_tables(connection, cursor):
 
 def create_engine_for_load_step(db_data=DB_DATA):
     return create_engine(db_data)
-
