@@ -1,5 +1,5 @@
-from sql_utils import setup_db_connection, create_db_tables, create_engine_for_load_step
-from source.transform import *
+from lambda_code.sql_utils import setup_db_connection, create_db_tables, create_engine_for_load_step
+from lambda_code.transform import *
 
 def load_to_database(df, table_name):
     engine = create_engine_for_load_step() # this will be useful for pandas df.to_sql method
@@ -7,6 +7,11 @@ def load_to_database(df, table_name):
     create_db_tables(connection, cursor) # set up the sql tables that we will be loading to
 
     df.to_sql(table_name, engine, if_exists='append', index=False)
+
+def create_order_basket(df):
+    df = format_df(df)
+    drop_columns(df, 'date', 'branch', 'total_price', 'payment_type', 'name')
+    return df
 
 def load_products_table(df):
     products_df = pd.DataFrame.copy(df)
@@ -34,8 +39,10 @@ def import_order_basket():
 
 def load_baskets():
     connection, cursor = setup_db_connection()
-    cursor.execute("UPDATE item_basket SET product_id = products.product_id FROM products WHERE item_basket.product LIKE products.product")
-    cursor.execute("INSERT INTO baskets SELECT order_id, product_id FROM item_basket")
+    sql_update = ("UPDATE item_basket SET product_id = products.product_id FROM products join item_basket t on t.product = products.product")
+    cursor.execute(sql_update)
+    sql_insert = ("INSERT INTO baskets (SELECT order_id, product_id FROM item_basket)")
+    cursor.execute(sql_insert)
     connection.commit()
     cursor.close()
     connection.close()

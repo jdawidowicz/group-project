@@ -1,15 +1,6 @@
-######################################################
-# Joseph Beckett
-# Transform - A file to change the data to the clients specifications
-# File Created 05/12/22
-# File Last Edited 05/12/22
-######################################################
-
 import pandas as pd
 import numpy as np
 from datetime import datetime
-pd.options.mode.chained_assignment = None  # default='warn'
-
 
 def format_df(df):
     # date to seconds
@@ -32,7 +23,8 @@ def drop_columns(df, *columns):
     # Deletes sensitive columns
     for column in columns:
         if column in df:
-            del df[column]     
+            del df[column]
+        
     return df
 
 def split_product_lines(df):
@@ -57,13 +49,5 @@ def product_table(df):
     df = pd.DataFrame(product_dict_list)
     
     return df
-
-
-
-def create_order_basket(df):
-    df = format_df(df)
-    drop_columns(df, 'date', 'branch', 'total_price', 'payment_type', 'name')
-    return df
-
 
 
