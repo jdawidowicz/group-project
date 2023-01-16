@@ -50,7 +50,4 @@ def product_table(df):
     
     return df
 
-def create_order_basket(df):
-    df = format_df(df)
-    drop_columns(df, 'date', 'branch', 'total_price', 'payment_type', 'name')
-    return df
+

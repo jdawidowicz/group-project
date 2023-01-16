@@ -58,9 +58,8 @@ def create_db_tables(connection, cursor):
     """
     create_basket_data_table = \
     """
-         CREATE TABLE IF NOT EXISTS "public"."basket"(
+         CREATE TABLE IF NOT EXISTS "public"."baskets"(
              "order_id" INTEGER,
-             "product" varchar(50),
              "product_id" INTEGER)
          ENCODE AUTO;
     """
