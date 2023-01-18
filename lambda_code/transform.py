@@ -3,13 +3,14 @@ import numpy as np
 from datetime import datetime
 
 def format_df(df):
-    # date to seconds
-    # pd.options.mode.chained_assignment = None  # default='warn'
-    # col = 'date'
-    # for i in range(len(df[col])):
-    #     current = df[col].iloc[i]
-    #     dt = datetime.strptime(current, '%d/%m/%Y %H:%M')
-    #     df[col].iloc[i] = int(dt.timestamp())
+    #pd.options.mode.chained_assignment = None  # default='warn'
+    #col = 'time'
+    #for i in range(len(df[col])):
+    #    current = df[col].iloc[i]
+    #    dt = datetime.strptime(current, "%d/%m/%Y %H:%M").strftime("%Y-%m-%d %H:%M")
+    #    df[col].iloc[i] = dt
+        
+    #     "errorMessage": "time data '2022-12-07 09:00' does not match format '%d/%m/%Y %H:%M'",
 
     # Deletes sensitive columns
     if 'card_details' in df:
@@ -49,5 +50,4 @@ def product_table(df):
     df = pd.DataFrame(product_dict_list)
     
     return df
-
 

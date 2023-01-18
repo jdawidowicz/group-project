@@ -78,7 +78,7 @@ def create_db_tables(connection, cursor):
         "order_id" INTEGER NOT NULL IDENTITY (1,1),
         "total_price" NUMERIC(18,2) NULL,
         "branch" VARCHAR NULL,
-        "date" VARCHAR NULL,
+        "time" TIMESTAMP NULL,
         "payment_type" VARCHAR NULL,
         PRIMARY KEY("order_id") ) ENCODE AUTO;
     """
@@ -93,3 +93,4 @@ def create_db_tables(connection, cursor):
 
 def create_engine_for_load_step(db_data=DB_DATA):
     return create_engine(db_data)
+

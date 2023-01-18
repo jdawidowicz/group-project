@@ -11,7 +11,7 @@ def read_files(csv_object):
     #list_of_df = []
 
     
-    df = pd.read_csv(io.BytesIO(csv_object['Body'].read()), names=['date', 'branch', 'name', 'product', 'total_price', 'payment_type', 'card_details'])
+    df = pd.read_csv(io.BytesIO(csv_object['Body'].read()), names=['time', 'branch', 'name', 'product', 'total_price', 'payment_type', 'card_details'])
     #list_of_df.append(df)
 
     return df

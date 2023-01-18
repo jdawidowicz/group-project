@@ -16,7 +16,7 @@ def lambda_handler(event, context):
   csv_object = s3_client.get_object(Bucket=bucket,Key=csv_file_name)
   df = read_files(csv_object)
   df = format_df(df)
- #print(df.head(10))
+  
 
   #create and load orders table
   load_orders_table(df)
@@ -24,11 +24,11 @@ def lambda_handler(event, context):
   #create and load products table
   load_products_table(df)
 
-  print(import_order_basket)
+  #print(import_order_basket)
   #create and load basket table
   load_order_basket_table(df)
-  load_item_basket_table()
-  load_baskets()
+  #load_item_basket_table()
+  #load_baskets()
   
   return {
     'statusCode': 200,

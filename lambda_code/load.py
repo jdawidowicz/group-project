@@ -10,7 +10,7 @@ def load_to_database(df, table_name):
 
 def create_order_basket(df):
     df = format_df(df)
-    drop_columns(df, 'date', 'branch', 'total_price', 'payment_type', 'name')
+    drop_columns(df, 'time', 'branch', 'total_price', 'payment_type', 'name')
     return df
 
 def load_products_table(df):
@@ -39,10 +39,10 @@ def import_order_basket():
 
 def load_baskets():
     connection, cursor = setup_db_connection()
-    sql_update = ("UPDATE item_basket SET product_id = products.product_id FROM products join item_basket t on t.product = products.product")
-    cursor.execute(sql_update)
-    sql_insert = ("INSERT INTO baskets (SELECT order_id, product_id FROM item_basket)")
-    cursor.execute(sql_insert)
+    sql2 = ("UPDATE item_basket SET product_id = products.product_id FROM products join item_basket t on t.product = products.product")
+    cursor.execute(sql2)
+    sql4 = ("INSERT INTO baskets (SELECT order_id, product_id FROM item_basket)")
+    cursor.execute(sql4)
     connection.commit()
     cursor.close()
     connection.close()
