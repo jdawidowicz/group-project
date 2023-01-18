@@ -41,10 +41,21 @@ def setup_db_connection(host=HOST, user=USER, password=PASSWORD, port=PORT, db_n
     return connection, cursor
 
 def create_db_tables(connection, cursor):
+    create_temp_orders_table= \
+    """"
+        CREATE TABLE IF NOT EXISTS "public"."temp_orders"( 
+        "order_id" INTEGER NOT NULL,
+        "products" VARCHAR NULL,
+        "total_price" NUMERIC(18,2) NULL,
+        "branch" VARCHAR NULL,
+        "time" TIMESTAMP NULL,
+        "payment_type" VARCHAR NULL,
+        PRIMARY KEY("order_id") ) ENCODE AUTO;
+    """
     create_order_basket_data_table = \
      """
         CREATE TABLE IF NOT EXISTS "public"."order_basket"(
-            "order_id" INTEGER NOT NULL IDENTITY (1,1),
+            "order_id" INTEGER NOT NULL,
             "product" text) 
          ENCODE AUTO;
     """
@@ -71,11 +82,11 @@ def create_db_tables(connection, cursor):
          "price" NUMERIC(18,2) NULL,
          PRIMARY KEY("product_id") ) 
          ENCODE AUTO;
-     """;
+     """
     create_order_data_table = \
     """
         CREATE TABLE IF NOT EXISTS "public"."orders"( 
-        "order_id" INTEGER NOT NULL IDENTITY (1,1),
+        "order_id" INTEGER NOT NULL,
         "total_price" NUMERIC(18,2) NULL,
         "branch" VARCHAR NULL,
         "time" TIMESTAMP NULL,
@@ -87,6 +98,7 @@ def create_db_tables(connection, cursor):
     cursor.execute(create_basket_data_table)
     cursor.execute(create_product_data_table)
     cursor.execute(create_order_data_table)
+    cursor.execute(create_temp_orders_table)
     connection.commit()
     cursor.close()
     connection.close()

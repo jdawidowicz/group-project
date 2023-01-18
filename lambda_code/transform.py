@@ -3,7 +3,7 @@ import numpy as np
 from datetime import datetime
 
 def format_df(df):
-    #pd.options.mode.chained_assignment = None  # default='warn'
+    pd.options.mode.chained_assignment = None  # default='warn'
     #col = 'time'
     #for i in range(len(df[col])):
     #    current = df[col].iloc[i]
@@ -50,4 +50,3 @@ def product_table(df):
     df = pd.DataFrame(product_dict_list)
     
     return df
-

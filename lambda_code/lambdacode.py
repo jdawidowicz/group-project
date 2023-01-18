@@ -1,8 +1,8 @@
-import json
-import os
-from lambda_code.extract import read_files
 from lambda_code.transform import *
 from lambda_code.load import *
+from lambda_code.extract import*
+import os
+import json
 import pandas as pd
 import boto3
 
@@ -17,18 +17,19 @@ def lambda_handler(event, context):
   df = read_files(csv_object)
   df = format_df(df)
   
-
+  load_temp_orders_table(df)
   #create and load orders table
-  load_orders_table(df)
+  load_orders_table()
+  
 
   #create and load products table
   load_products_table(df)
-
+  
   #print(import_order_basket)
   #create and load basket table
-  load_order_basket_table(df)
-  #load_item_basket_table()
-  #load_baskets()
+  load_item_basket_table()
+  load_baskets()
+  drop_temporary_rows()
   
   return {
     'statusCode': 200,
