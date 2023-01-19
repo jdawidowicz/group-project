@@ -66,6 +66,12 @@ Resources:
       Code:
           S3Bucket: !Ref DeploymentBucket
           S3Key: !Ref DeploymentPackageKey
+      VpcConfig:
+          SecurityGroupIds:
+            - vpc-074a915f1e3638ac2
+          SubnetIds:
+            - subnet-06c7892b30edabb83
+            - subnet-094da3bc58405b134
 
   S3Bucket:
     Type: AWS::S3::Bucket
