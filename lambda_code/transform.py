@@ -2,25 +2,20 @@ import pandas as pd
 import numpy as np
 from datetime import datetime
 
+## Deletes sensitive columns
 def format_df(df):
-    # date to seconds
-    # pd.options.mode.chained_assignment = None  # default='warn'
-    # col = 'date'
-    # for i in range(len(df[col])):
-    #     current = df[col].iloc[i]
-    #     dt = datetime.strptime(current, '%d/%m/%Y %H:%M')
-    #     df[col].iloc[i] = int(dt.timestamp())
+    pd.options.mode.chained_assignment = None  # default='warn'
 
-    # Deletes sensitive columns
     if 'card_details' in df:
         del df['card_details']
     if 'name' in df:
         del df['name']
     
     return df
-
+    
+## Deletes given columns
 def drop_columns(df, *columns):
-    # Deletes sensitive columns
+
     for column in columns:
         if column in df:
             del df[column]
@@ -33,8 +28,6 @@ def split_product_lines(df):
     return df
 
 def product_table(df):
-    # spaces not removed even though it works in the source function. Had to repeat the code
-    # needs work but the output is correct
     df = format_df(df)
     df = split_product_lines(df)
     product_list = df['product'].tolist()
@@ -49,5 +42,3 @@ def product_table(df):
     df = pd.DataFrame(product_dict_list)
     
     return df
-
-
