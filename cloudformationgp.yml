@@ -6,7 +6,6 @@ Parameters:
   DeploymentBucket:
     Type: String
     Description: Enter the name of the S3 bucket where your deployment package is.
-    Default: team1-code-bucket
   DeploymentPackageKey:
     Type: String
     Description: Enter the name of the S3 key of your deployment package.
@@ -14,7 +13,6 @@ Parameters:
   S3BucketName:
     Type: String
     Description: Enter name of the S3 data bucket
-    Default: delee3-team1-testbucket2
 
 
 

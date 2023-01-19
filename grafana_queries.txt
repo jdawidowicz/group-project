@@ -1,0 +1,14 @@
+## Total sales per day.
+SELECT sum(total_price), time::DATE as t FROM orders GROUP BY t;
+
+## Card vs Cash
+SELECT COUNT(order_id), payment_type FROM orders GROUP BY payment_type
+
+## Spend per customer
+SELECT total_price, COUNT(order_id) from orders GROUP BY total_price ORDER BY total_price ASC
+
+## Sales per product
+SELECT product, count(product_id) from baskets left join products using (product_id) GROUP BY product ORDER BY count(product_id) DESC
+
+## Sales by branch
+SELECT SUM(total_price), branch FROM orders GROUP BY branch
