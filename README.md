@@ -34,38 +34,36 @@ We were given a task to create a detailed database for our client. Their growing
 PYTHON
 <br>
 Libraries (see requirements.txt for details):<br>
-pandas<br>
-numpy<br>
-boto3<br>
-psycopg2<br>
-SQLAlchemy<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pandas<br>
+&nbsp;&nbsp;&nbsp;&nbsp;numpy<br>
+&nbsp;&nbsp;&nbsp;&nbsp;boto3<br>
+&nbsp;&nbsp;&nbsp;&nbsp;psycopg2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;SQLAlchemy<br><br>
 
 AWS
 <br>
-Cloudformation<br>
-S3<br>
-EC2<br>
-Lambda<br>
-Cloudwatch<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Cloudformation<br>
+&nbsp;&nbsp;&nbsp;&nbsp;S3<br>
+&nbsp;&nbsp;&nbsp;&nbsp;EC2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Lambda<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Cloudwatch<br>
 <br>
 GRAFANA<br>
-Docker<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Docker<br>
 <br>
 REDSHIFT
 <br> 
 
 
-
-
 <!-- GETTING STARTED -->
 ## Key Features
 <br>
- * ETL
- * Data normalization
- * System and data Monitoring
- * Data visualisation
- * Automation
- * Analytics
+   - ETL<br>
+   - Data normalization<br>
+   - System and data Monitoring<br>
+   - Data visualisation<br>
+   - Automation<br>
+   - Analytics
 <br>
 <br>
 
@@ -152,7 +150,14 @@ teamone.co.uk
 
 <!-- ACKNOWLEDGMENTS -->
 ## Credits
-
+<br>
+Jakub Dawidowicz <br>
+Owen Illingworth<br>
+Joseph Beckett<br>
+Olga Michniewicz<br>
+Aurelija Vinikaityte<br>
+<br>
+Generation.co.uk<br>
 Copyright by TeamOne 2023
 
 
