@@ -29,7 +29,7 @@ We were given a task to create a detailed database for our client. Their growing
 <br>
 
 ## Built With
-
+<br>
 PYTHON
 <br>
 Libraries (see requirements.txt for details):<br>
@@ -58,7 +58,7 @@ Redshift
 
 <!-- GETTING STARTED -->
 ## Key Features
-
+<br>
 - ETL
 - Data normalization
 - System and data Monitoring
@@ -67,7 +67,7 @@ Redshift
 - Analytics
 <br>
 ## Prerequisites
-
+<br>
 PYTHON 3.9 + requirements.txt
 <br>
 DOCKER
@@ -85,8 +85,9 @@ REDSHIFT CLUSTER
 5. Set up Grafana on EC2 and Docker
 
 <br>
-<!-- USAGE EXAMPLES -->
+
 ## Usage
+<br>
 
 Extract:
 <br>
