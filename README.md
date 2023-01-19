@@ -48,10 +48,10 @@ EC2<br>
 Lambda<br>
 Cloudwatch<br>
 <br>
-Grafana<br>
+GRAFANA<br>
 Docker<br>
 <br>
-Redshift
+REDSHIFT
 <br> 
 
 
