@@ -112,7 +112,11 @@ Cloudwatch logs and Redshift tables are available for view and analysis in Grafa
 <br><br>
 
 
-
+## Platfrom Infrastructure
+<br>
+<br>
+<img src="https://user-images.githubusercontent.com/95292365/213474604-a563b63a-ac36-4af9-ab1f-709be8a2df0d.png">
+<br>
 
 
 <!-- CONTRIBUTING -->
