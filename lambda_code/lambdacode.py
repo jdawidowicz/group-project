@@ -1,37 +1,13 @@
-from lambda_code.transform import *
-from lambda_code.load import *
-from lambda_code.extract import*
-import os
-import json
+## Imports
 import pandas as pd
-import boto3
+import glob
+import os
+import io
 
-s3_client = boto3.client('s3')
+## Functions
+# Reads CSV file
+def read_files(csv_object):
+    
+    df = pd.read_csv(io.BytesIO(csv_object['Body'].read()), names=['time', 'branch', 'name', 'product', 'total_price', 'payment_type', 'card_details'])
 
-def lambda_handler(event, context):
-  # TODO implement
-  bucket = event['Records'][0]['s3']['bucket']['name']
-  csv_file_name = event['Records'][0]['s3']['object']['key']
- 
-  csv_object = s3_client.get_object(Bucket=bucket,Key=csv_file_name)
-  df = read_files(csv_object)
-  df = format_df(df)
-  
-  load_temp_orders_table(df)
-  #create and load orders table
-  load_orders_table()
-  
-
-  #create and load products table
-  load_products_table(df)
-  
-  #print(import_order_basket)
-  #create and load basket table
-  load_item_basket_table()
-  load_baskets()
-  drop_temporary_rows()
-  
-  return {
-    'statusCode': 200,
-    'body': json.dumps('Hello from Lambda!')
-    }  
+    return df

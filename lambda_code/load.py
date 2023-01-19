@@ -1,6 +1,7 @@
 from lambda_code.sql_utils import setup_db_connection, create_db_tables, create_engine_for_load_step
 from lambda_code.transform import *
 
+##Function to load a given dataframe to a given table
 def load_to_database(df, table_name):
     engine = create_engine_for_load_step() # this will be useful for pandas df.to_sql method
     connection, cursor = setup_db_connection()
@@ -10,11 +11,7 @@ def load_to_database(df, table_name):
     cursor.close()
     connection.close()
 
-#def create_order_basket(df):
-#    df = format_df(df)
-#    drop_columns(df, 'time', 'branch', 'total_price', 'payment_type', 'name')
-#    return df
-
+##Functions to load individual tables
 def load_temp_orders_table(df):
     load_to_database(df, 'temp_orders')
 
@@ -33,11 +30,7 @@ def load_orders_table():
     connection.commit()
     cursor.close()
     connection.close()
-
-#def load_order_basket_table(df):
-#    order_basket_df = pd.DataFrame.copy(df)
-#    order_basket_df = create_order_basket(order_basket_df)
-#    load_to_database(order_basket_df, 'order_basket')  
+ 
 
 def load_item_basket_table():
     item_basket_df = create_item_basket()
