@@ -21,12 +21,12 @@
 
 
 
-
+<br>
 <!-- ABOUT THE PROJECT -->
 ## Project Background
 
 We were given a task to create a detailed database for our client. Their growing business consists of 120 cafes and their aim is to be able to track sales in an easier and more consistent way. Due to the demand the company is receiving, they need to figure out how they can best target new and returning customers, and also understand which products are selling well. Their current set up is very limited and only produces general sales reports. Our aim is to facilitate data collection and analysis for the client.
-
+<br>
 
 ## Built With
 
@@ -65,7 +65,7 @@ Redshift
 - Data visualisation
 - Automation
 - Analytics
-
+<br>
 ## Prerequisites
 
 PYTHON 3.9 + requirements.txt
@@ -84,7 +84,7 @@ REDSHIFT CLUSTER
 4. Put your Redshift login credentials in AWS Parameter Store
 5. Set up Grafana on EC2 and Docker
 
-
+<br>
 <!-- USAGE EXAMPLES -->
 ## Usage
 
@@ -107,14 +107,14 @@ Monitoring and Visualisation:
 <br>
 Cloudwatch logs and Redshift tables are available for view and analysis in Grafana. 
 <br>
-<br>
+
 
 
 
 
 <!-- CONTRIBUTING -->
 ## Further developments
-<br>
+
 <br>
 Next steps in improving the code are planned as follows:
 <br>
