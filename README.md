@@ -150,6 +150,5 @@ teamone.co.uk
 ## Credits
 
 Copyright by TeamOne 2023
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
