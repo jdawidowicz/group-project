@@ -24,7 +24,7 @@
 <br>
 <!-- ABOUT THE PROJECT -->
 ## Project Background
-
+<br>
 We were given a task to create a detailed database for our client. Their growing business consists of 120 cafes and their aim is to be able to track sales in an easier and more consistent way. Due to the demand the company is receiving, they need to figure out how they can best target new and returning customers, and also understand which products are selling well. Their current set up is very limited and only produces general sales reports. Our aim is to facilitate data collection and analysis for the client.
 <br>
 
@@ -66,6 +66,7 @@ Redshift
 - Automation
 - Analytics
 <br>
+<br>
 ## Prerequisites
 <br>
 PYTHON 3.9 + requirements.txt
@@ -82,9 +83,7 @@ REDSHIFT CLUSTER
 2. Upload lambda_code.zip to an S3 Bucket
 3. Deploy the CloudFormation template, specifying the location of the deployment code in lambda_code.zip
 4. Put your Redshift login credentials in AWS Parameter Store
-5. Set up Grafana on EC2 and Docker
-
-<br>
+5. Set up Grafana on EC2 and Docker<br>
 
 ## Usage
 <br>
@@ -107,7 +106,7 @@ Transformed data is then loaded into Redshift Warehouse.
 Monitoring and Visualisation:
 <br>
 Cloudwatch logs and Redshift tables are available for view and analysis in Grafana. 
-<br>
+<br><br>
 
 
 
