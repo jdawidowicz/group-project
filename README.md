@@ -72,11 +72,11 @@ REDSHIFT
 ## Prerequisites
 
 <br>
-PYTHON 3.9 + requirements.txt
+Python 3.9 + requirements.txt
 <br>
-DOCKER
+Docker
 <br>
-REDSHIFT CLUSTER
+Redshift Cluster
 <br>
 
 ## Installation
