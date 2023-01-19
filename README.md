@@ -25,6 +25,7 @@
 <!-- ABOUT THE PROJECT -->
 ## Project Background
 <br>
+<br>
 We were given a task to create a detailed database for our client. Their growing business consists of 120 cafes and their aim is to be able to track sales in an easier and more consistent way. Due to the demand the company is receiving, they need to figure out how they can best target new and returning customers, and also understand which products are selling well. Their current set up is very limited and only produces general sales reports. Our aim is to facilitate data collection and analysis for the client.
 <br>
 
