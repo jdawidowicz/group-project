@@ -60,12 +60,12 @@ REDSHIFT
 <!-- GETTING STARTED -->
 ## Key Features
 <br>
-- ETL
-- Data normalization
-- System and data Monitoring
-- Data visualisation
-- Automation
-- Analytics
+ * ETL
+ * Data normalization
+ * System and data Monitoring
+ * Data visualisation
+ * Automation
+ * Analytics
 <br>
 <br>
 
