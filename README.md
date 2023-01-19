@@ -50,36 +50,27 @@ We were given a task to create a detailed database for our client. Their growing
 
 ### Built With
 
-Python
+PYTHON
 <br>
-Libraries (see requirements.txt for details):
-  * pandas
-  * numpy
-  * boto3
-  * psycopg2
-  * SQLAlchemy
+Libraries (see requirements.txt for details):<br>
+pandas<br>
+numpy<br>
+boto3<br>
+psycopg2<br>
+SQLAlchemy<br>
 
-<br>
-<br>
 AWS
 <br>
-  * Cloudformation
-  * S3
-  * EC2
-  * Lambda
-  * Cloudwatch
-
+Cloudformation<br>
+S3<br>
+EC2<br>
+Lambda<br>
+Cloudwatch<br>
 <br>
-<br>
-Grafana
-  * Docker
-
-<br>
+Grafana<br>
+Docker<br>
 <br>
 Redshift
-
-
-<br>
 <br> 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -125,13 +116,16 @@ Extract:
 <br>
 CSV dropped into the intial S3 bucket triggers main Lambda to run and extracts the file for the code to process.  
 <br>
+<br>
 Transform:
 <br>
 Python code normalises data using Pandas and SQL. Single file is then separated into three main tables "Orders, "Products" and "Baskets". Few temporary tabels are also used to support the process. 
 <br>
+<br>
 Load:
 <br>
 Transformed data is then loaded into Redshift Warehouse.
+<br>
 <br>
 Monitoring and Visualisation:
 <br>
